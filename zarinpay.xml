@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension version="2.5" type="plugin" group="vmpayment" method="upgrade">
+    <name>zarinpay</name>
+    <creationDate>November 19 2014</creationDate>
+    <author>Site123.ir</author>
+    <authorUrl>http://www.site123.ir</authorUrl>
+    <copyright>Copyright (C) 2014 Site123.ir . All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
+    <version>1</version>
+    <description><![CDATA[<a href="http://www.site123.ir" target="_blank">Zarinpay</a> پلاگین اتصال ویرچومارت به درگاه پرداخت زرین پال است. ]]>
+    </description>
+
+    <files>
+        <filename plugin="zarinpay">zarinpay.php</filename>
+        <filename plugin="zarinpay">nusoap.php</filename>
+    </files>
+
+    <vmconfig>
+        <fields name="params">
+            <fieldset name="basic" addfieldpath="/administrator/components/com_virtuemart/fields">
+                <field type="vmtitle" default="مشخصات حساب کاربری زرین پال"/>
+
+                <field type="text" required="true" name="zarinpayemail" size="50" label="ایمیل ثبت نامی در زرین پال"
+                       default="" description=""/>
+                <field type="text" required="true" name="zarinpaycode" size="50" label="کد درگاه زرین پال"
+                       default="" description=""/>
+					   
+				<field type="vmtitle" default="امکانات مربوط به ارسال ایمیل در نسخه رایگان موجود نیست، می توانید با خرید یکی از نسخه های ویژه درگاه پرداخت امکانات اتصال به سرویس ایمیل و یا پیامک بعد از پرداخت را دریافت نمایید."
+                       description=""/>
+					   
+                <field type="vmtitle" default="وضعیت سفارش ها"
+                       description=""/>
+                <field name="status_pending" type="vmorderstate" scope="com_virtuemart" default="U"
+                           label="وضعیت پرداخت منتظر تأیید" description=""/>
+                <field name="status_success" type="vmorderstate" scope="com_virtuemart" default="C"
+                       label="وضعیت پرداخت موفق" description=""/>
+                <field name="status_canceled" type="vmorderstate" scope="com_virtuemart" default="X"
+                       label="وضعیت پرداخت ناموفق" description=""/>
+
+                <field type="vmtitle" default="انتخاب واحد پولی" />
+
+                <field name="payment_currency" type="vmacceptedcurrency" default="" label="انتخاب واحد پولی (تنها ریال)"
+                       description=""/>
+					   
+                <field  type="vmtitle" default="محدودیت های سرویس پرداخت"
+                       description=""/>
+                <field name="countries" multiple="true" type="vmcountries" scope="com_virtuemart" default=""
+                           label="کشورهای دارای اجازه پرداخت" description=""/>
+                    <field name="min_amount" type="text" label="حداقل مبلغ پرداخت"
+                           description=""/>
+                    <field name="max_amount" type="text" label="حداکثر مبلغ پرداخت"
+                           description=""/>
+
+                <field  type="vmtitle" default="مبلغ کسری از هر تراکنش"
+                       description=""/>
+                    <field name="cost_per_transaction" type="text" label="کسر مبلغ ازای هر تراکنش"
+                           description=""/>
+                    <field name="cost_percent_total" type="text" label="کسر درصد از کل مبلغ تراکنش"
+                           description=""/>
+                    <field name="tax_id" type="vmtaxes" scope="com_virtuemart" label="اعمال مالیات"
+                           description=""/>
+
+                <field  type="vmtitle" default="پلاگین دیباگ"
+                       description=""/>
+                <field name="debug" type="list" default="0" label="فعال کردن دیباگ پلاگین" >
+                    <option value="0">COM_VIRTUEMART_NO</option>
+                    <option value="1">COM_VIRTUEMART_YES</option>
+                </field>
+                <field name="log" type="list" default="0" label="لوگ گیری از فعالیت ها"
+                       description="">
+                    <option value="0">COM_VIRTUEMART_NO</option>
+                    <option value="1">COM_VIRTUEMART_YES</option>
+                </field>
+            </fieldset>
+        </fields>
+    </vmconfig>
+</extension>
